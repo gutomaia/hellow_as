@@ -5,6 +5,8 @@ package net.guto.hellow.core {
 	public class SocketConnection implements ConnectionHandle {
 		private var _socket:Socket;
 
+		public function SocketConnection(){}
+
 		private function getSocket():Socket {
 //		if ($this->_socket < 0) {
 //			$this->disconnect();

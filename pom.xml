@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.guto.hellow</groupId>
+    <artifactId>hellowAs</artifactId>
+    <name>Hellow</name>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>swc</packaging>
+
+ <build>
+   <sourceDirectory>src/main/flex</sourceDirectory>
+   <testSourceDirectory>src/test/flex</testSourceDirectory>
+   <plugins>
+    <plugin>
+     <groupId>org.sonatype.flexmojos</groupId>
+     <artifactId>flexmojos-maven-plugin</artifactId>
+     <version>3.2.0</version>
+     <extensions>true</extensions>
+      <configuration>
+        <testRunner>
+          <launcher>
+            <flashplayerCommand>${flashPlayer.command}</flashplayerCommand>
+          </launcher>
+        </testRunner>
+      </configuration>
+   </plugin>
+   </plugins>
+  </build>
+
+  <dependencies>
+   <dependency>
+    <groupId>com.adobe.flex.framework</groupId>
+    <artifactId>flex-framework</artifactId>
+    <version>3.2.0.3958</version>
+    <type>pom</type>
+   </dependency>
+
+   <dependency>
+    <groupId>org.sonatype.flexmojos</groupId>
+    <artifactId>flexmojos-unittest-support</artifactId>
+    <version>3.2.0</version>
+    <type>swc</type>
+    <scope>test</scope>
+   </dependency>
+  </dependencies>
+
+</project>

@@ -1,6 +1,11 @@
-/** MSN PROTOCOL VERSION 8;
- * @author Gustavo Maia Neto
- */
+/*  HellowAs, alpha version
+ *  (c) 2009 Gustavo Maia Neto (gutomaia)
+ *
+ *  HellowAs and all other Hellow flavors is and will be always
+ *  freely distributable under the terms of an GPLv3 licence.
+ *
+ *  Human Knowledge belongs to the World!
+ *--------------------------------------------------------------------------*/
 
 package net.guto.hellow.protocol {
 	import net.guto.hellow.protocol.Notification;

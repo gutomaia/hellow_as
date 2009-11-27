@@ -8,7 +8,9 @@ package net.guto.hellow.test {
 		public var connected:Boolean = false;
 		public var group:String = null;
 		public var contact:String = null;
-
+		
+		public function MockClient(){
+		}
 
 		public function onLogged():void{
 			logged = true;

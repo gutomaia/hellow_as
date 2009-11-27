@@ -8,13 +8,16 @@ package net.guto.hellow.test {
 		public var received:String = null;
 		public var host:String = null;
 		public var port:int = 0;
+		
+		public function MockConnection() {
+		}
 
 		public function connect(host:String, port:int):void {
 			this.host = host;
 			this.port = port;
 		}
 
-		function disconnect():void {
+		public function disconnect():void {
 		}
 
 		public function send(cmd:String):void {

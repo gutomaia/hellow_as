@@ -78,11 +78,7 @@ package net.guto.hellow.protocol {
 
 		override public function execute(command:String):void {
 			var params:Array = command.split(" ");
-			if (params[0] == "VER") {
-				send(cvr());
-			}else if (params[0] == "CVR"){
-				send(usr());
-			}
+
 /*
 			$params = explode(" ", trim($command));
 			switch ($params[0]) {

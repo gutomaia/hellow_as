@@ -1,6 +1,9 @@
 package net.guto.hellow.test {
 	import asunit.framework.TestCase;
 	import net.guto.hellow.protocol.Msnp8;
+	import net.guto.hellow.test.MockAuthentication;
+	import net.guto.hellow.test.MockConnection;
+	import net.guto.hellow.test.MockClient;
 
 	public class ProtocolTest extends TestCase {
 
@@ -9,11 +12,17 @@ package net.guto.hellow.test {
 		}
 
 		private var msn:Msnp8;
-		private var _receivedMessage:String;
-		private var _sendedMessage:String;
+		private var _mockAuthentication:MockAuthentication;
+		private var _mockConnection:MockConnection;
+		private var _mockClient:MockClient;
 
 		protected override function setUp():void{
 			msn = new Msnp8();
+			_mockAuthentication = new MockAuthentication();
+			_mockConnection = new MockConnection();
+			_mockClient = new MockClient();
+			msn.addConnectionListener(_mockClient);
+			msn.addContactListener(_mockClient);
 		}
 
 		protected override function tearDown():void{
@@ -25,6 +34,7 @@ package net.guto.hellow.test {
 		}
 
 		private function send(msg:String):void{
+			//$this->assertEquals($msg, $this->_mockConnection->sended, "Send command is invalid");
 		}
 
 		public function testSession():void{

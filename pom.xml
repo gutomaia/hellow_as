@@ -6,7 +6,6 @@
 	<name>Hellow</name>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>swc</packaging>
-
 	<build>
 		<sourceDirectory>src/main/flex</sourceDirectory>
 		<testSourceDirectory>src/test/flex</testSourceDirectory>
@@ -14,7 +13,7 @@
 			<plugin>
 				<groupId>org.sonatype.flexmojos</groupId>
 				<artifactId>flexmojos-maven-plugin</artifactId>
-				<version>3.4.0</version>
+				<!--<version>3.4.0</version>-->
 				<extensions>true</extensions>
 				<configuration>
 					<testRunner>
@@ -24,7 +23,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.adobe.flex.framework</groupId>
@@ -40,4 +38,43 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>flex-mojos-repository</id>
+			<url>http://repository.sonatype.org/content/groups/flexgroup</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>Javanet</id>
+			<name>Java Net Download</name>
+			<url>http://download.java.net/maven/2/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<repositories>
+		<repository>
+			<id>flex-mojos-repository</id>
+			<url>http://repository.sonatype.org/content/groups/flexgroup</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>Javanet</id>
+			<name>Java Net Download</name>
+			<url>http://download.java.net/maven/2/</url>
+			<!--
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			-->
+		</repository>
+	</repositories>
 </project>

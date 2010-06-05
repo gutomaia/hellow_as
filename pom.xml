@@ -6,6 +6,16 @@
 	<name>Hellow</name>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>swc</packaging>
+	<prerequisites>
+		<maven>2.0.9</maven>
+	</prerequisites>
+	<developers>
+		<developer>
+			<id>gutomaia</id>
+			<name>Gustavo Maia Neto</name>
+			<email>guto@guto.net</email>
+		</developer>
+	</developers>
 	<build>
 		<sourceDirectory>src/main/flex</sourceDirectory>
 		<testSourceDirectory>src/test/flex</testSourceDirectory>

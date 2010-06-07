@@ -87,7 +87,6 @@ package net.guto.hellow.protocol {
 			if (params[0] == "VER") {
 				send(cvr());
 			}else if (params[0] == "CVR"){
-				trace("passed here");
 				send(usr());
 			} else if (params[0] == "XFR"){
 				var host_port:Array = params[3].split(":");

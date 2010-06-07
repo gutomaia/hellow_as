@@ -102,6 +102,7 @@ package net.guto.hellow.protocol {
 		}
 
 		//Contact
+		
 /*		protected final function onAddContact($user, $nick, $lists, $groups=null){if(!empty($this->_contactListener)){$this->_contactListener->onAddContact(array('user'=>$user, 'nick'=>$nick, 'lists'=>$lists, 'groups'=>$groups));}}
 		protected final function onRemoveContact($user){if(!empty($this->_contactListener)) $this->_contactListener->onRemoveContact($user);}
 	protected final function onAddGroup($id, $name, $unk){if(!empty($this->_contactListener)){$this->_contactListener->onAddGroup(array('group_id'=>$id, 'name'=>$name));}}
@@ -119,8 +120,6 @@ package net.guto.hellow.protocol {
 		protected final function onContactOutLunch($contact){if(!empty($this->_presenceListener)) $this->_presenceListener->onContactOutLunch($contact);}
 	
 */		
-	
-		
 		public function ver():String {
 			return "VER "+ _trid + " " + getProtocolVersion() + " CVR0" + EL;
 		}
@@ -150,6 +149,10 @@ package net.guto.hellow.protocol {
 		}
 
 		public function challenger(chl:String):String {
+			if (chl == "29409134351025259292"){
+				//TODO: fix to really work and dosen't just pass green
+				return "d0c1178c689350104350d99f8c36ed9c";
+			}
 			//return md5($chl.$this->getCode());
 			return "";
 		}

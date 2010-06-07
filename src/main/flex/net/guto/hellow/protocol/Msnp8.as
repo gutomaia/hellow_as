@@ -87,92 +87,33 @@ package net.guto.hellow.protocol {
 			if (params[0] == "VER") {
 				send(cvr());
 			}else if (params[0] == "CVR"){
+				trace("passed here");
 				send(usr());
+			} else if (params[0] == "XFR"){
+				var host_port:Array = params[3].split(":");
+				connect(host_port[0],host_port[1]);
+			}else if (params[0] == "USR"){
+				if (params[2] == "TWN"){
+					authenticate(params[4]);
+					send(usr());
+				}else if (params[2] == "OK"){
+					onLogged();
+					send(syn());
+				}
+			}else if (params[0] == "SYN") {
+				send(chg());
+			}/* GTC,BLP,PRP */ else if (params[0] == "LSG") {
+				//$this->onAddGroup($params[1], $params[2], $params[3]);
+			} else if (params[0] == "LST"){
+				//if (sizeof($params) == 5) {						
+				//	$this->onAddContact($params[1], $params[2], $params[3], $params[4]);
+				//} else {
+				//	$this->onAddContact($params[1], $params[2], $params[3]);
+				//}
+			}/* PHH,PHW,PHM,MOB,MBE,BPR,ILN,FLN,NLN,MSG,RNG */ else if (params[0] == "CHL"){
+				//$this->send($this->qry($params[2]));
+			}/* QRY, 207 */ else {
 			}
-/*
-			$params = explode(" ", trim($command));
-			switch ($params[0]) {
-				case "VER" :
-					$this->send($this->cvr());
-					break;
-				case "CVR" :
-					$this->send($this->usr());
-					break;
-				case "XFR" :
-					$host_port = explode(":", $params[3]);
-					$this->connect($host_port[0], $host_port[1]);
-					break;
-				case "USR" :
-					if ($params[2] == "TWN") {
-						$this->_passport = $this->authenticate($params[4]);
-						$this->send($this->usr());
-					}
-					elseif ($params[2] == "OK") {
-						$this->onLogged(null);
-						$this->send($this->syn());
-					}
-					break;
-				case "SYN" :
-					$this->send($this->chg());
-					break;
-				case "GTC" :
-					break;
-				case "BLP" :
-					break;
-				case "PRP" :
-					break;
-				case "LSG" :
-					$this->onAddGroup($params[1], $params[2], $params[3]);
-					break;
-				case "LST" :
-					if (sizeof($params) == 5) {						
-						$this->onAddContact($params[1], $params[2], $params[3], $params[4]);
-					} else {
-						$this->onAddContact($params[1], $params[2], $params[3]);
-					}
-					break;
-				case "PHH":
-				case "PHW":
-				case "PHM":
-
-				case "MOB":
-				case "MBE":
-
-				case "BPR" :
-					break;
-				case "ILN" :				
-					break;
-				case "FLN" :
-					//$this->onContactOffline($contact);
-					break;
-				case "NLN" :
-					break;
-				case "MSG" :
-					break;
-				case "RNG" :
-					//RNG sessid address authtype ticket invitepassport invitename\r\n
-					//RNG 876505971 65.54.228.15:1863 CKI 4216622.2513084 username@hotmail.com Nick
-					//Msnc1::enter($params[1], $params[2], $params[3], $params[4], $params[5]);
-					break;
-				case "CHG" :
-					$this->onConnected();
-					break;
-				case "CHL" :
-					$this->send($this->qry($params[2]));
-					break;
-				case "QRY" :
-				break;				
-				case "207" :
-					$this->disconnect();
-					break;
-				default :
-					echo "MSG RESPONSAVEL POR ERRO---$command---";
-					//$cont = false;
-					//die();
-					//$this->disconnect();
-			}
-*/
 		}
 	}
-
 }

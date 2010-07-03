@@ -1,5 +1,3 @@
 hellow_as TODO list
 
-- any maven operation is taking to long! need it to build faster and compile faster and soon to test id faster. OK better with flexmojos 3.4, can it be better?!?
-
-- need a gui interface to know what is happing with the tests, something like infinity test
+- need to test payload messages

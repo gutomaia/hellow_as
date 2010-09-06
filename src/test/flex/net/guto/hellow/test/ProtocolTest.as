@@ -61,7 +61,7 @@ package net.guto.hellow.test {
 		public function testSession():void{
 			//Sends the MSN Client version
 			//send("VER 1 MSNP8 CVR0\r\n");
-			//acknolodge
+			//Acknowledge
 			receive("VER 1 MSNP8 CVR0\r\n");
 			send("CVR 2 0x0409 win 4.10 i386 MSNMSGR 6.0.0602 MSMSGS dvader@empire.com\r\n");
 			

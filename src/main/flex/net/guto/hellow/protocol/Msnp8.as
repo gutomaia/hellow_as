@@ -9,6 +9,7 @@
  
 
 package net.guto.hellow.protocol {
+
 	import net.guto.hellow.protocol.Notification;
 
 	public class Msnp8 extends Notification {
@@ -83,15 +84,17 @@ package net.guto.hellow.protocol {
 		}
 
 		override public function execute(command:String):void {
+			//var params:Array = command.trim().split(" ");
 			var params:Array = command.split(" ");
-			if (params[0] == "VER") {
+			var cmd:String = params[0];
+			if (cmd == "VER") {
 				send(cvr());
-			}else if (params[0] == "CVR"){
+			}else if (cmd == "CVR"){
 				send(usr());
-			} else if (params[0] == "XFR"){
+			} else if (cmd == "XFR"){
 				var host_port:Array = params[3].split(":");
 				connect(host_port[0],host_port[1]);
-			}else if (params[0] == "USR"){
+			}else if (cmd == "USR"){
 				if (params[2] == "TWN"){
 					authenticate(params[4]);
 					send(usr());
@@ -99,20 +102,26 @@ package net.guto.hellow.protocol {
 					onLogged();
 					send(syn());
 				}
-			}else if (params[0] == "SYN") {
+			}else if (cmd == "SYN"){
 				send(chg());
-			}/* GTC,BLP,PRP */ else if (params[0] == "LSG") {
+			}else if (cmd == "CHL"){
+				trace(params[2]);
+				send(qry(params[2]));
+			}else if (cmd == "GTC"){
+				
+			}else if (cmd == "BLP"){
+			}else if (cmd == "PRP"){
+			} else if (cmd == "LSG") {
 				//$this->onAddGroup($params[1], $params[2], $params[3]);
-			} else if (params[0] == "LST"){
+			} else if (cmd == "LST"){
 				//if (sizeof($params) == 5) {						
 				//	$this->onAddContact($params[1], $params[2], $params[3], $params[4]);
 				//} else {
 				//	$this->onAddContact($params[1], $params[2], $params[3]);
 				//}
-			}/* PHH,PHW,PHM,MOB,MBE,BPR,ILN,FLN,NLN,MSG,RNG */ else if (params[0] == "CHL"){
-				//$this->send($this->qry($params[2]));
-			}/* QRY, 207 */ else {
 			}
+			/* PHH,PHW,PHM,MOB,MBE,BPR,ILN,FLN,NLN,MSG,RNG */ 
+			/* QRY, 207 */ 
 		}
 	}
 }

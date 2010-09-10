@@ -6,7 +6,6 @@
  *
  *  Human Knowledge belongs to the World!
  *--------------------------------------------------------------------------*/
- 
 
 package net.guto.hellow.protocol {
 
@@ -56,9 +55,6 @@ package net.guto.hellow.protocol {
 		}
 	
 		protected override function connect(host:String, port:int):void {
-			//if ($this->_username == null || $this->_password == null) {
-			//	//die('User or password null'); //TODO: see why
-			//}
 			super.connect(host, port);
 			send(ver());
 			listen();
@@ -103,23 +99,79 @@ package net.guto.hellow.protocol {
 
 		//Contact
 		
-/*		protected final function onAddContact($user, $nick, $lists, $groups=null){if(!empty($this->_contactListener)){$this->_contactListener->onAddContact(array('user'=>$user, 'nick'=>$nick, 'lists'=>$lists, 'groups'=>$groups));}}
-		protected final function onRemoveContact($user){if(!empty($this->_contactListener)) $this->_contactListener->onRemoveContact($user);}
-	protected final function onAddGroup($id, $name, $unk){if(!empty($this->_contactListener)){$this->_contactListener->onAddGroup(array('group_id'=>$id, 'name'=>$name));}}
-		protected final function onRemoveGroup($group){}
+		protected final function onAddContact(user:String, nick:String, lists:String, groups:String):void{
+			if(_contactListener != null){
+				//_contactListener->onAddContact(array('user'=>$user, 'nick'=>$nick, 'lists'=>$lists, 'groups'=>$groups));
+			}
+		}
+		
+		protected final function onRemoveContact(user:String):void{
+			//if(_contactListener) _contactListener.onRemoveContact(user);
+		}
+		
+		protected final function onAddGroup(id:String, name:String):void{
+			if(_contactListener != null){
+				//_contactListener->onAddGroup(array('group_id'=>$id, 'name'=>$name));
+			}
+		}
+		protected final function onRemoveGroup(group:String):void{
+		}
 
 		// Presence
-		protected final function onContactOnline($contact){if(!empty($this->_presenceListener)) $this->_presenceListener->onContactOnline($contact);}
-		protected final function onContactOffline($contact){if(!empty($this->_presenceListener)) $this->_presenceListener->onContactOffline($contact);}
-		protected final	function onContactAvaiable($contact){if(!empty($this->_presenceListener)) $this->_presenceListener->onContactAvaiable($contact);}
-		protected final function onContactBusy($contact){if(!empty($this->_presenceListener)) $this->_presenceListener->onContactBusy($contact);}
-		protected final function onContactIdle($contact){if(!empty($this->_presenceListener)) $this->_presenceListener->onContactIdle($contact);}
-		protected final function onContactBeRightBack($contact){if(!empty($this->_presenceListener)) $this->_presenceListener->onContactBeRightBack($contact);}
-		protected final function onContactAway($contact){if(!empty($this->_presenceListener)) $this->_presenceListener->onContactAway($contact);}
-		protected final function onContactOnPhone($contact){if(!empty($this->_presenceListener)) $this->_presenceListener->onContactOnPhone($contact);}
-		protected final function onContactOutLunch($contact){if(!empty($this->_presenceListener)) $this->_presenceListener->onContactOutLunch($contact);}
-	
-*/		
+		protected final function onContactOnline(contact:String):void{
+			if(_presenceListener != null){
+				//_presenceListener.onContactOnline(contact);
+			}
+		}
+		
+		protected final function onContactOffline(contact:String):void{
+			if(_presenceListener != null){
+				//_presenceListener.onContactOffline(contact);
+			}
+		}
+		
+		protected final	function onContactAvaiable(contact:String):void{
+			if(_presenceListener != null){
+				_presenceListener.onContactAvaiable(contact);
+			}
+		}
+		
+		protected final function onContactBusy(contact:String):void{
+			if(_presenceListener != null){
+				_presenceListener.onContactBusy(contact);
+			}				
+		}
+		
+		protected final function onContactIdle(contact:String):void{
+			if(_presenceListener != null){
+				_presenceListener.onContactIdle(contact);
+			}
+		}
+		
+		protected final function onContactBeRightBack(contact:String):void{
+			if(_presenceListener != null){
+				_presenceListener.onContactBeRightBack(contact);
+			}
+		}
+		
+		protected final function onContactAway(contact:String):void{
+			if(_presenceListener != null){
+				_presenceListener.onContactAway(contact);
+			}
+		}
+		
+		protected final function onContactOnPhone(contact:String):void{
+			if(_presenceListener != null){
+				_presenceListener.onContactOnPhone(contact);
+			}
+		}
+		
+		protected final function onContactOutLunch(contact:String):void{
+			if(_presenceListener != null){
+				_presenceListener.onContactOutLunch(contact);
+			}
+		}
+		
 		public function ver():String {
 			return "VER "+ _trid + " " + getProtocolVersion() + " CVR0" + EL;
 		}
@@ -149,8 +201,9 @@ package net.guto.hellow.protocol {
 		}
 
 		public function challenger(chl:String):String {
-			if (chl == "29409134351025259292"){
+			if (chl == "29409134351025259292" || chl == "29409134351025259292\r\n"){
 				//TODO: fix to really work and dosen't just pass green
+				//TODO make a trim function
 				return "d0c1178c689350104350d99f8c36ed9c";
 			}
 			//return md5($chl.$this->getCode());

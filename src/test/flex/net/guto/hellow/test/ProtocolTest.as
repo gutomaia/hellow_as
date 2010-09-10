@@ -112,9 +112,16 @@ package net.guto.hellow.test {
 			//assertEquals(_mockClient.contact.nick, 'Luke');
 			//assertEquals(_mockClient.contact.lists, '3'); //Luke dosen't have Vader in their list! Bastard!!
 			//assertEquals(_mockClient.contact.groups, '1');
+			
 			send("CHG 9 NLN 0\r\n");
 			receive("CHG 9 NLN 0\r\n");
-			receive("CHL 0 \r\n");
+
+			receive("CHL 0 29409134351025259292\r\n");
+			send("QRY 10 msmsgs@msnmsgr.com 32\r\nd0c1178c689350104350d99f8c36ed9c");
+			
+			//receive("FLN emperor@empire.com\r\n");
+			//receive("FLN emperor@empire.com\r\n");
+			//receive("NLN BSY luke@rebels.org Luke JediMaster 268435492\r\n");
 		}
 	}
 }

@@ -98,6 +98,8 @@ package net.guto.hellow.test {
 			//assertNotNull('Group is null and should be setted as Jedis', _mockClient.group);
 			//assertEquals('Invalid group id', '1', _mockClient.group.group_id);
 			//assertEquals('Invalid group name', 'Jedis', _mockClient.group.name);
+
+			// Add Emperor as a contact
 			//assertEquals(_mockClient.contact, null);
 			receive("LST emperor@empire.com Emperor 13 0\r\n");
 			//assertNotNull('Contact is null and should be setted as emperor@empire.com', _mockClient.contact);
@@ -106,6 +108,8 @@ package net.guto.hellow.test {
 			//assertEquals('13', this._mockClient.contact.lists);
 			//assertEquals('0', this._mockClient.contact.groups);
 			receive("BPR MOB Y\r\n");
+			
+			// Add Luke as a contact
 			receive("LST luke@rebels.org Luke 3 1\r\n");
 			//assertNotNull('Contact is null and should be setted as luke@rebels.org', _mockClient.contact);
 			//assertEquals(_mockClient.contact.user, 'luke@rebels.org');
@@ -115,13 +119,34 @@ package net.guto.hellow.test {
 			
 			send("CHG 9 NLN 0\r\n");
 			receive("CHG 9 NLN 0\r\n");
+			
+			//Initial Presence
+			receive("ILN 9 NLN emperor@empire.com Emperor 24\r\n");
+			receive("ILN 9 IDL luke@rebels.org Luke 268435492\r\n");
 
 			receive("CHL 0 29409134351025259292\r\n");
 			send("QRY 10 msmsgs@msnmsgr.com 32\r\nd0c1178c689350104350d99f8c36ed9c");
 			
-			//receive("FLN emperor@empire.com\r\n");
-			//receive("FLN emperor@empire.com\r\n");
-			//receive("NLN BSY luke@rebels.org Luke JediMaster 268435492\r\n");
+			// Presence
+			receive("NLN NLN luke@rebels.org Luke%20JediMaster 268435492\r\n");//Available
+			receive("NLN BSY luke@rebels.org Luke%20JediMaster 268435492\r\n");//Busy
+			receive("NLN IDL luke@rebels.org Luke%20JediMaster 268435492\r\n");//Idle
+			receive("NLN BRB luke@rebels.org Luke%20JediMaster 268435492\r\n");//Be Right Back
+			receive("NLN AWY luke@rebels.org Luke%20JediMaster 268435492\r\n");//Away
+			receive("NLN PHN luke@rebels.org Luke%20JediMaster 268435492\r\n");//On the Phone
+			receive("NLN LUN luke@rebels.org Luke%20JediMaster 268435492\r\n");//Out to lunch
+			receive("FLN luke@rebels.org\r\n");
+			
+			receive("FLN emperor@empire.com\r\n");
+			
+			// Call
+			receive("RNG 876505971 65.54.228.15:1863 CKI 4216622.2513084 emperor@empire.com Emperor");
+			//assertEquals("876505971", mockCall.call);
+			//assertEquals("65.54.228.15", mockCall.server);
+			//assertEquals(1863, mockCall.port);
+			//assertEquals("4216622.2513084", mockCall.cki);
+			//assertEquals("emperor@empire.com", mockCall.username);
+			//assertEquals("Emperor", mockCall.nick);			
 		}
 	}
 }
